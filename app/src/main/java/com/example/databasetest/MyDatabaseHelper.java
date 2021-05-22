@@ -21,7 +21,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "category text, "
             + "type int, " // 枚举，单选=1、多选=2、判断=3
             + "question text, "
-            + "answer text, "
+            + "answer text, "// test
             + "points int, "
             + "choiceA text, "
             + "choiceB text, "
