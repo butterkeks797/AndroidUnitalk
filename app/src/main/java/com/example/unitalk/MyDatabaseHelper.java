@@ -1,4 +1,4 @@
-package com.example.databasetest;
+package com.example.unitalk;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,4 +1,4 @@
-package com.example.databasetest;
+package com.example.unitalk;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.databasetest.R;
 
 public class MainActivity extends AppCompatActivity {
 
