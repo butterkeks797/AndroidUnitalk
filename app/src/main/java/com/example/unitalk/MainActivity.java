@@ -1,17 +1,27 @@
 package com.example.unitalk;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.databasetest.R;
+import com.example.unitalk.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //private BottomBar bottomBar;
+    //private BottomBarTab tab;
+    private Button btn1;
+    private Button btn2;
+    private Button btn3;
+    private Button btn4;
+
 
     private MyDatabaseHelper dbHelper;
 
@@ -19,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViews();
+        initViews();
+
+
         dbHelper = new MyDatabaseHelper(this, "BookStore.db", null, 2);
         Button createDatabase = (Button) findViewById(R.id.create_database);
         createDatabase.setOnClickListener(new View.OnClickListener() {
@@ -94,4 +109,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void initViews() {
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+    }
+
+    private void findViews() {
+        btn1 = (Button) findViewById(R.id.btn1);
+        btn2 = (Button) findViewById(R.id.btn2);
+        btn3 = (Button) findViewById(R.id.btn3);
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn1:
+                startActivity(new Intent(MainActivity.this, SampleActivity.class));
+                break;
+            case R.id.btn2:
+                startActivity(new Intent(MainActivity.this, BottomBarColorActivity.class));
+                break;
+            case R.id.btn3:
+                startActivity(new Intent(MainActivity.this, BadgesActivity.class));
+                break;
+
+        }
+
+    }
 }
