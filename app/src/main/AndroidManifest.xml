@@ -19,7 +19,7 @@
         <activity android:name=".SampleActivity"/>
         <activity android:name=".BottomBarColorActivity"/>
         <activity android:name=".BadgesActivity"/>
-        <activity android:name=".languageTest.TestActivity"/>
+        <activity android:name=".languageTest.activity.TestActivity"/>
 
 
         <provider

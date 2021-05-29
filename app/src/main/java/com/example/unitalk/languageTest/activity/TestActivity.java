@@ -1,4 +1,4 @@
-package com.example.unitalk.languageTest;
+package com.example.unitalk.languageTest.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

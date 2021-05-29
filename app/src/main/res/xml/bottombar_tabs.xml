@@ -3,26 +3,27 @@
     <tab
         id="@+id/tab_userCenter"
         title="用户中心"
-        icon="@drawable/ic_tab1"
+        icon="@drawable/ic_user"
+
         />
     <tab
         id="@+id/tab_languageTest"
         title="语言测试"
-        icon="@drawable/ic_tab2"
+        icon="@drawable/ic_test"
         />
     <tab
         id="@+id/tab_home"
         title="主页"
-        icon="@drawable/ic_tab3"
+        icon="@drawable/home_focus"
         />
     <tab
         id="@+id/tab_partnerMatch"
         title="寻找语伴"
-        icon="@drawable/ic_tab4"
+        icon="@drawable/ic_discover"
         />
     <tab
         id="@+id/tab_friendsList"
         title="语伴列表"
-        icon="@drawable/ic_tab5"
+        icon="@drawable/ic_chat"
         />
 </tabs>
