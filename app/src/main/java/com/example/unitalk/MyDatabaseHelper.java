@@ -20,7 +20,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "choiceA text, "
             + "choiceB text, "
             + "choiceC text, "
-            + "choiceD text)";
+            + "choiceD text, "
+            + "selected text)";
 
     public static final String CREATE_USER_INFO = "create table UserInfo ("
             + "id integer primary key autoincrement, "
@@ -34,9 +35,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "username text, "
             + "gender text, "
             + "grade text, "
-            + "mother_tongue text, "
             + "student_number text, "
-            + "grade text, "
             + "mother_tongue text)";
 
 

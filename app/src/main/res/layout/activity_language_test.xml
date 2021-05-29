@@ -1,74 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.unitalk.languageTest.TestActivity">
 
-    <Button
-        android:id="@+id/create_database"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create database"
-        />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/add_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add data"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/update_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update data"
-        />
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Question Desciption" />
 
-    <Button
-        android:id="@+id/delete_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete data"
-        />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/query_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Query data"
-        />
+                <RadioButton
+                    android:id="@+id/answerA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AnswerA" />
 
-    <Button
-        android:id="@+id/language_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="开始测试" />
+                <RadioButton
+                    android:id="@+id/answerB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AnswerB" />
+
+                <RadioButton
+                    android:id="@+id/answerC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AnswerC" />
+
+                <RadioButton
+                    android:id="@+id/answerD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AnswerD" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/explaination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Question Explaination"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="7"
         android:orientation="horizontal">
 
-        <Space
-            android:layout_width="116dp"
-            android:layout_height="272dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_previous"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView"
-            tools:text="@tools:sample/cities" />
+            android:text="上一题" />
 
-        <Space
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="下一题" />
 
     </LinearLayout>
 

@@ -13,6 +13,7 @@ public class Question {
     String choiceB;
     String choiceC;
     String choiceD;
+    String selected;
 
     public int getId() {
         return id;
@@ -108,6 +109,10 @@ public class Question {
 
     public void setChoiceD(String choiceD) {
         this.choiceD = choiceD;
+    }
+
+    public void setSelected(String selected) {
+        this.selected = selected;
     }
 
 

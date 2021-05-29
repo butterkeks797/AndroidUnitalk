@@ -53,11 +53,6 @@
             android:layout_height="wrap_content"
             android:text="Update data" />
 
-        <Button
-            android:id="@+id/language_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="进入测试" />
 
     </LinearLayout>
 
@@ -84,6 +79,11 @@
             android:id="@+id/btn3"
             style="@style/ButtonStyle"
             android:text="Badges_Activity" />
+
+        <Button
+            android:id="@+id/language_test"
+            style="@style/ButtonStyle"
+            android:text="Language_Activity" />
     </LinearLayout>
 
 
