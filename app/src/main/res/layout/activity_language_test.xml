@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <Button
+        android:id="@+id/create_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create database"
+        />
+
+    <Button
+        android:id="@+id/add_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add data"
+        />
+
+    <Button
+        android:id="@+id/update_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update data"
+        />
+
+    <Button
+        android:id="@+id/delete_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete data"
+        />
+
+    <Button
+        android:id="@+id/query_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query data"
+        />
+
+    <Button
+        android:id="@+id/language_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始测试" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="116dp"
+            android:layout_height="272dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            tools:text="@tools:sample/cities" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>

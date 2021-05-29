@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_userCenter"
+        title="用户中心"
+        icon="@drawable/ic_tab1"
+        />
+    <tab
+        id="@+id/tab_languageTest"
+        title="语言测试"
+        icon="@drawable/ic_tab2"
+        />
+    <tab
+        id="@+id/tab_home"
+        title="主页"
+        icon="@drawable/ic_tab3"
+        />
+    <tab
+        id="@+id/tab_partnerMatch"
+        title="寻找语伴"
+        icon="@drawable/ic_tab4"
+        />
+    <tab
+        id="@+id/tab_friendsList"
+        title="语伴列表"
+        icon="@drawable/ic_tab5"
+        />
+</tabs>
