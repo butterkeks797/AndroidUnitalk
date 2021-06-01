@@ -21,15 +21,12 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        //Toolbar 待做
-
         // final View layout = findViewById(R.id.contentContainer);
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);

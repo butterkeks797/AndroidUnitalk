@@ -1,5 +1,6 @@
 package com.example.unitalk.partnerMatch;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.unitalk.R;
+import com.example.unitalk.languageTest.activity.LanguageTestActivity;
 
 public class PartnerMatchFragment extends Fragment {
     @Nullable

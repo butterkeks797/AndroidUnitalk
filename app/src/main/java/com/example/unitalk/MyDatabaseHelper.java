@@ -36,7 +36,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "gender text, "
             + "grade text, "
             + "student_number text, "
-            + "mother_tongue text)";
+            + "mother_tongue text, "
+            + "partners text)";
 
 
 

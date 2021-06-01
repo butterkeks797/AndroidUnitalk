@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.unitalk.languageTest.activity.LanguageTestActivity">
+    tools:context="com.example.unitalk.friendsList.activity.FriendsList">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,36 +26,22 @@
                 android:layout_height="wrap_content"
                 android:text="Question Desciption" />
 
-            <RadioGroup
-                android:id="@+id/radioGroup"
+
+            <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:text="好友1"/>
 
-                <RadioButton
-                    android:id="@+id/answerA"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AnswerA" />
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="好友2">
+            </ListView>
 
-                <RadioButton
-                    android:id="@+id/answerB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AnswerB" />
-
-                <RadioButton
-                    android:id="@+id/answerC"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AnswerC" />
-
-                <RadioButton
-                    android:id="@+id/answerD"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AnswerD" />
-
-            </RadioGroup>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="好友3"/>
 
             <TextView
                 android:id="@+id/explaination"
@@ -74,20 +60,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_previous"
+            android:id="@+id/btn_rate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="bottom"
             android:text="上一题" />
-
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:text="下一题" />
 
     </LinearLayout>
 

@@ -12,15 +12,12 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SampleActivity"/>
-        <activity android:name=".BottomBarColorActivity"/>
-        <activity android:name=".BadgesActivity"/>
-        <activity android:name=".languageTest.activity.TestActivity"/>
 
+        <activity android:name=".languageTest.activity.LanguageTestActivity"/>
+        <activity android:name=".friendsList.activity.FriendListActivity"/>
 
         <provider
             android:name="com.example.unitalk.DatabaseProvider"

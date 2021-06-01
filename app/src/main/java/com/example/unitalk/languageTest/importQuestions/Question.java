@@ -1,4 +1,4 @@
-package com.example.unitalk.languageTest.activity;
+package com.example.unitalk.languageTest.importQuestions;
 
 public class Question {
     int id;
