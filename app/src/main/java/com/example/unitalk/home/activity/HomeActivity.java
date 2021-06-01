@@ -12,5 +12,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_home);
 
+
+
+
+
     }
 }

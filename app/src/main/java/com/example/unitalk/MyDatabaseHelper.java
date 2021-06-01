@@ -3,7 +3,6 @@ package com.example.unitalk;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     // TODO 用户信息表；题库表；聊天消息表
@@ -25,10 +24,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_USER_INFO = "create table UserInfo ("
             + "id integer primary key autoincrement, "
-            + "age integer, "
+            + "age int, "
             + "email text, "
             + "region text, "
-            + "target_language text, "
+            + "target_language1 text, "
+            + "target_language2 text, "
+            + "target_language3 text, "
+            + "intention text, "
             + "major text, "
             + "nationality text, "
             + "school text, "
@@ -36,8 +38,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "gender text, "
             + "grade text, "
             + "student_number text, "
-            + "mother_tongue text, "
-            + "partners text)";
+            + "mother_tongue text)";
 
 
 

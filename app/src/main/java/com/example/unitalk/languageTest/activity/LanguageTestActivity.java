@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,12 +17,15 @@ import android.widget.TextView;
 
 import com.example.unitalk.MyDatabaseHelper;
 import com.example.unitalk.R;
-import com.example.unitalk.UserInfo;
-import com.example.unitalk.languageTest.importQuestions.Question;
+import com.example.unitalk.bean.User;
+import com.example.unitalk.bean.Question;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class LanguageTestActivity extends AppCompatActivity {
     private MyDatabaseHelper dbHelper;
@@ -33,15 +38,17 @@ public class LanguageTestActivity extends AppCompatActivity {
     private int current;
     private boolean wrongMode;
     private int score;
-    private UserInfo user;
+    private User user;
 
 
     private TextView tv_question;
     private RadioButton[] radioButtons;
     private Button btn_next;
-    private Button btn_previous;
+    private Button btn_pause_test;
     private TextView tv_explaination;
     private RadioGroup radioGroup;
+
+    List<Integer> wrongList;
 
     // 获取测试配置：语种、题目数量
     // 从数据库取出题目
@@ -53,6 +60,8 @@ public class LanguageTestActivity extends AppCompatActivity {
         testConfiguration = getConfig();
         questionList = getQuestionList();
         selectionList = new String[testConfiguration.QuestionNum + 2];
+        wrongList = new ArrayList<Integer>();
+
         score = 100;
     }
 
@@ -64,7 +73,7 @@ public class LanguageTestActivity extends AppCompatActivity {
         radioButtons[2] = (RadioButton) findViewById(R.id.answerC);
         radioButtons[3] = (RadioButton) findViewById(R.id.answerD);
         btn_next = (Button) findViewById(R.id.btn_next);
-        btn_previous = (Button) findViewById(R.id.btn_previous);
+        btn_pause_test = (Button) findViewById(R.id.btn_pause_test);
         tv_explaination = (TextView) findViewById(R.id.explaination);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
@@ -78,6 +87,7 @@ public class LanguageTestActivity extends AppCompatActivity {
         radioButtons[2].setText("C. " + q.getChoiceC());
         radioButtons[3].setText("D. " + q.getChoiceD());
         tv_explaination.setText("本题答案：" + q.getAnswer());
+        radioGroup.clearCheck();
     }
 
     @Override
@@ -91,7 +101,6 @@ public class LanguageTestActivity extends AppCompatActivity {
         count = testConfiguration.QuestionNum;
         current = 0;
         wrongMode = false;
-
 
         Question q = questionList.get(0);
         refreshButtonsWith(q);
@@ -130,18 +139,24 @@ public class LanguageTestActivity extends AppCompatActivity {
             }
         });
 
-        btn_previous.setOnClickListener(new View.OnClickListener() {
+        btn_pause_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (current > 0) {
-                    current--;
-                    Question q = questionList.get(current);
-                    refreshButtonsWith(q);
-                    radioGroup.clearCheck();
-                    if (!selectionList[current].equals("")) {
-                        radioButtons[selectionList[current].charAt(0) - 'A'].setChecked(true);
-                    }
-                }
+                new AlertDialog.Builder(LanguageTestActivity.this, R.style.AlertDialogTheme)
+                        .setTitle("提示")
+                        .setMessage("确定要退出测试吗？中途退出将不会保存考试进度和成绩。")
+                        .setPositiveButton("是", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finishTest();
+                            }
+                        })
+                        .setNegativeButton("否", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -164,7 +179,6 @@ public class LanguageTestActivity extends AppCompatActivity {
     }
 
     private void reviewOrNot() {
-        final List<Integer> wrongList = checkAnswer(questionList);
         String reportMessage;
         switch (wrongList.size()) {
             case 0: {
@@ -221,7 +235,7 @@ public class LanguageTestActivity extends AppCompatActivity {
     }
 
     private void saveScoreOrNot() {
-
+        wrongList = checkAnswer(questionList);
         new AlertDialog.Builder(LanguageTestActivity.this, R.style.AlertDialogTheme)
                 .setTitle("提示")
                 .setMessage("本次考试结束，您的分数为：" + score + "\n" + "需要保存成绩吗？")
@@ -302,12 +316,12 @@ public class LanguageTestActivity extends AppCompatActivity {
         return t;
     }
 
-    public UserInfo getUserInfo() {
+    public User getUserInfo() {
         // Todo 从MainActivity中获得user的信息，用于写入score
         // 暂时mock，等旭晓的代码
-        user = new UserInfo();
-        user.setNickname("mock名字");
-        user.setScore(80);
+        user = new User();
+        user.setUserName("mock名字");
+        user.setTargetScore1(80);
         return user;
     }
 

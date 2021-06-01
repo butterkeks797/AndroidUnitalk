@@ -13,8 +13,9 @@ import android.widget.TextView;
 
 import com.example.unitalk.MyDatabaseHelper;
 import com.example.unitalk.R;
-import com.example.unitalk.UserInfo;
-import com.example.unitalk.languageTest.importQuestions.Question;
+import com.example.unitalk.bean.User;
+import com.example.unitalk.bean.User;
+import com.example.unitalk.bean.Question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,10 @@ public class FriendsList extends AppCompatActivity {
     int pagesize;
     private MyDatabaseHelper dbHelper;
 
-    private List<UserInfo> friendList;
+    private List<User> friendList;
 
 
-    private UserInfo user;
+    private User user;
 
     private Button btn_rate;
     @Override
@@ -49,17 +50,17 @@ public class FriendsList extends AppCompatActivity {
         });
     }
 
-    public List<UserInfo> getFriendsPaged(int pagesize) {
+    public List<User> getFriendsPaged(int pagesize) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // 查询Question表中所有的数据
-        String[] selectionArgs = { String.valueOf(user.getId()) };
+        String[] selectionArgs = { String.valueOf(user.getUserName()) };
         Cursor cursor = db.query("UserInfo", null, "id=?", selectionArgs, null, null, null);
         int i = 0;
-        List<UserInfo> res = new ArrayList<>();
+        List<User> res = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
                 // 遍历Cursor对象，取出数据并打印
-                UserInfo q = new UserInfo();
+                User q = new User();
                 q.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 q.setPartnerList(cursor.getString(cursor.getColumnIndex("partners")));
                 res.add(q); // 取出信息

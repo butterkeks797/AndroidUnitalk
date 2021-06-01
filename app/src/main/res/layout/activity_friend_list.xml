@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="bottom"
-            android:text="上一题" />
+            android:text="评价" />
 
     </LinearLayout>
 

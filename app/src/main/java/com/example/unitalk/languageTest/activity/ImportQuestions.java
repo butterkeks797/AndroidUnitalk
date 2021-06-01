@@ -1,10 +1,12 @@
-package com.example.unitalk.languageTest.importQuestions;
+package com.example.unitalk.languageTest.activity;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.example.unitalk.MyDatabaseHelper;
+
+import static com.example.unitalk.MyDatabaseHelper.CREATE_USER_INFO;
 
 public class ImportQuestions  extends AppCompatActivity {
     private MyDatabaseHelper dbHelper;

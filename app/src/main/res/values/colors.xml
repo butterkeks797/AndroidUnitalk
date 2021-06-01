@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#f6f6f6</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#F30000</color>
     <color name="colorPrimaryDark">#f6f6f6</color>
     <color name="colorAccent">#1383ec</color>
     <color name="windowBackground">#f8fcfe</color>
     <color name="textColorPrimary">#000000</color>
     <color name="bottomBarInActiveTabColor">#899192</color>
     <color name="bottomBarActiveTabColor">#4b77e5</color>
+    <color name="dividerColor">#DFDFDF</color>
 </resources>

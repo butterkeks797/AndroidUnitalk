@@ -71,13 +71,13 @@ public class DatabaseProvider extends ContentProvider {
         switch (uriMatcher.match(uri)) {
             case QUESTION_DIR:
             case QUESTION_ITEM:
-                long newBookId = db.insert("Question", null, values);
-                uriReturn = Uri.parse("content://" + AUTHORITY + "/question/" + newBookId);
+                long newQuestionId = db.insert("Question", null, values);
+                uriReturn = Uri.parse("content://" + AUTHORITY + "/question/" + newQuestionId);
                 break;
             case USERINFO_DIR:
             case USERINFO_ITEM:
-                long newCategoryId = db.insert("UserInfo", null, values);
-                uriReturn = Uri.parse("content://" + AUTHORITY + "/userinfo/" + newCategoryId);
+                long newUserId = db.insert("UserInfo", null, values);
+                uriReturn = Uri.parse("content://" + AUTHORITY + "/userinfo/" + newUserId);
                 break;
             default:
                 break;
@@ -92,18 +92,18 @@ public class DatabaseProvider extends ContentProvider {
         int updatedRows = 0;
         switch (uriMatcher.match(uri)) {
             case QUESTION_DIR:
-                updatedRows = db.update("Book", values, selection, selectionArgs);
+                updatedRows = db.update("Question", values, selection, selectionArgs);
                 break;
             case QUESTION_ITEM:
                 String bookId = uri.getPathSegments().get(1);
-                updatedRows = db.update("Book", values, "id = ?", new String[] { bookId });
+                updatedRows = db.update("Question", values, "id = ?", new String[] { bookId });
                 break;
             case USERINFO_DIR:
-                updatedRows = db.update("Category", values, selection, selectionArgs);
+                updatedRows = db.update("UserInfo", values, selection, selectionArgs);
                 break;
             case USERINFO_ITEM:
-                String categoryId = uri.getPathSegments().get(1);
-                updatedRows = db.update("Category", values, "id = ?", new String[] { categoryId });
+                String userId = uri.getPathSegments().get(1);
+                updatedRows = db.update("UserInfo", values, "id = ?", new String[] { userId });
                 break;
             default:
                 break;
@@ -118,18 +118,18 @@ public class DatabaseProvider extends ContentProvider {
         int deletedRows = 0;
         switch (uriMatcher.match(uri)) {
             case QUESTION_DIR:
-                deletedRows = db.delete("Book", selection, selectionArgs);
+                deletedRows = db.delete("Question", selection, selectionArgs);
                 break;
             case QUESTION_ITEM:
                 String bookId = uri.getPathSegments().get(1);
-                deletedRows = db.delete("Book", "id = ?", new String[] { bookId });
+                deletedRows = db.delete("Question", "id = ?", new String[] { bookId });
                 break;
             case USERINFO_DIR:
-                deletedRows = db.delete("Category", selection, selectionArgs);
+                deletedRows = db.delete("UserInfo", selection, selectionArgs);
                 break;
             case USERINFO_ITEM:
                 String categoryId = uri.getPathSegments().get(1);
-                deletedRows = db.delete("Category", "id = ?", new String[] { categoryId });
+                deletedRows = db.delete("UserInfo", "id = ?", new String[] { categoryId });
                 break;
             default:
                 break;

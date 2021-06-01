@@ -12,48 +12,81 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
+            android:paddingTop="60dp">
 
             <TextView
                 android:id="@+id/question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Question Desciption" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Question Desciption"
+                android:textSize="22sp" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
                 <RadioButton
                     android:id="@+id/answerA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AnswerA" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="AnswerA"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividerColor" />
 
                 <RadioButton
                     android:id="@+id/answerB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AnswerB" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="AnswerB"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividerColor" />
 
                 <RadioButton
                     android:id="@+id/answerC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AnswerC" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="AnswerC"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividerColor" />
 
                 <RadioButton
                     android:id="@+id/answerD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AnswerD" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="AnswerD"
+                    android:textSize="20sp" />
 
             </RadioGroup>
 
@@ -61,33 +94,38 @@
                 android:id="@+id/explaination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Question Explaination"
+                android:textSize="20sp"
                 android:visibility="invisible" />
-
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="7"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_previous"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
-            android:text="上一题" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_next"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="bottom"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:text="下一题" />
+
+        <Button
+            android:id="@+id/btn_pause_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="退出考试" />
+
 
     </LinearLayout>
 

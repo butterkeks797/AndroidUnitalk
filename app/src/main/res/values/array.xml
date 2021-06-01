@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="target_language_array">
+        <item>汉语</item>
+        <item>英语</item>
+        <item>西班牙语</item>
+        <item>阿拉伯语</item>
+        <item>俄语</item>
+        <item>法语</item>
+        <item>德语</item>
+        <item>日语</item>
+        <item>其他语种</item>
+    </string-array>
+
+    <string-array name="intention_array">
+        <item>准备考试</item>
+        <item>提升语言能力</item>
+        <item>文化交流</item>
+        <item>聊天谈心</item>
+    </string-array>
+</resources>

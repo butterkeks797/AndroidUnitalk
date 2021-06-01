@@ -1,4 +1,4 @@
-package com.example.unitalk.languageTest.importQuestions;
+package com.example.unitalk.bean;
 
 public class Question {
     int id;

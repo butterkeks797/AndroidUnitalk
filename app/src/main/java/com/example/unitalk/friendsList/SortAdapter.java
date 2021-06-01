@@ -1,12 +1,16 @@
 package com.example.unitalk.friendsList;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.unitalk.R;
+import com.example.unitalk.bean.User;
 
 import java.util.List;
 
@@ -37,8 +41,11 @@ public class SortAdapter extends BaseAdapter{
         final User user = list.get(position);
         if (view == null) {
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(mContext).inflate(R.layout.item, null);
-            viewHolder.name = (TextView) view.findViewById(R.id.name);
+            view = LayoutInflater.from(mContext).inflate(R.layout.friendlist_item, null);
+            viewHolder.userName = (TextView) view.findViewById(R.id.name);
+            viewHolder.chatDate = (TextView) view.findViewById(R.id.chat_date);
+            viewHolder.briefIntro = (TextView) view.findViewById(R.id.brief_intro);
+            viewHolder.dots = (TextView) view.findViewById(R.id.dots);
             viewHolder.catalog = (TextView) view.findViewById(R.id.catalog);
             view.setTag(viewHolder);
         } else {
@@ -56,7 +63,10 @@ public class SortAdapter extends BaseAdapter{
             viewHolder.catalog.setVisibility(View.GONE);
         }
 
-        viewHolder.name.setText(this.list.get(position).getName());
+        viewHolder.userName.setText(this.list.get(position).getUserName());
+        viewHolder.chatDate.setText(this.list.get(position).getChatDate());
+        viewHolder.briefIntro.setText(this.list.get(position).getBriefIntro());
+        viewHolder.dots.setText("...");
 
         return view;
 
@@ -64,7 +74,11 @@ public class SortAdapter extends BaseAdapter{
 
     final static class ViewHolder {
         TextView catalog;
-        TextView name;
+        TextView userName;
+        TextView chatDate;
+        TextView briefIntro;
+        ImageView icon;
+        TextView dots;
     }
 
     /**
@@ -79,5 +93,7 @@ public class SortAdapter extends BaseAdapter{
         }
         return -1;
     }
+
+
 
 }
