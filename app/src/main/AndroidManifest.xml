@@ -17,9 +17,8 @@
         </activity>
 
         <activity android:name=".languageTest.activity.LanguageTestActivity"/>
-        <activity android:name=".friendsList.activity.FriendListActivity"/>
-        <activity android:name=".friendsList.activity.NewFriendActivity"/>
         <activity android:name=".friendsList.activity.ChatRoomActivity"/>
+        <activity android:name=".partnerMatch.activity.MatchResultActivity"/>
 
         <provider
             android:name="com.example.unitalk.DatabaseProvider"

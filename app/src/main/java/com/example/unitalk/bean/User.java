@@ -251,7 +251,15 @@ public class User implements Comparable<User> {
             firstLetter = "#";
         }
     }
+    public User(String name, String motherTongue, String targetLanguage1, String targetLanguage2, String targetLanguage3 , String intention) {
+        this.userName = name;
+        this.motherTongue = motherTongue;
+        this.targetLanguage1 = targetLanguage1;
+        this.targetLanguage2 = targetLanguage2;
+        this.targetLanguage3 = targetLanguage3;
+        this.intention = intention;
 
+    }
     @Override
     public int compareTo(User another) {
         if (firstLetter.equals("#") && !another.getFirstLetter().equals("#")) {

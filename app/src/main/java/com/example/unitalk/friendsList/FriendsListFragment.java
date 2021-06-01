@@ -15,7 +15,6 @@ import android.widget.ListView;
 
 import com.example.unitalk.R;
 import com.example.unitalk.bean.User;
-import com.example.unitalk.friendsList.activity.NewFriendActivity;
 import com.example.unitalk.friendsList.activity.ChatRoomActivity;
 
 import java.util.ArrayList;
@@ -43,8 +42,8 @@ public class FriendsListFragment extends Fragment {
             }
         });
         initData();
-        layout_new_friend = (LinearLayout) view.findViewById(R.id.new_friend_bar);
 
+        layout_new_friend = (LinearLayout) view.findViewById(R.id.new_friend_bar);
         layout_new_friend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,12 +53,13 @@ public class FriendsListFragment extends Fragment {
             }
         });
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("FriendListFragment", "go to ChatRoomActivity with id of " + position);
+                Log.d("FriendListFragment", "go to ChatRoomActivity with id of " + list.get(position).getId());
                 startActivity(new Intent(getActivity(), ChatRoomActivity.class));
+                // 换成getFragmentManager().beginTransaction().replace(R.id.contentContainer, (Fragment) chatRoomFragment).commit();
+                // TODO 传参，将list.get(position).getId()给到chatroom activity
             }
         });
 
@@ -75,17 +75,14 @@ public class FriendsListFragment extends Fragment {
         User u1 = new User("咩咩子", "5-23", "英语，西班牙语，法语", "miemiezi");
         list.add(u1);
         User u2 = new User("工具人", "3-21", "英语，德语", "gongjuren");
-
         list.add(u2);
         User u3 = new User("default", "1.29", "briefIntro", "default");
-        list.add(u3);
-        list.add(u3);
         list.add(u3);
         list.add(u3);
 
         // todo 遍历cursor，放入user对象
         Collections.sort(list); // 对list进行排序，需要让User实现Comparable接口重写compareTo方法
-        SortAdapter adapter = new SortAdapter(getContext(), list);
+        SortAdapter adapter = new SortAdapter(getContext(), list, false);
         listView.setAdapter(adapter);
     }
 }

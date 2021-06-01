@@ -18,10 +18,12 @@ public class SortAdapter extends BaseAdapter{
 
     private List<User> list = null;
     private Context mContext;
+    private boolean isNewFriend;
 
-    public SortAdapter(Context mContext, List<User> list) {
+    public SortAdapter(Context mContext, List<User> list, boolean isNewFriend) {
         this.mContext = mContext;
         this.list = list;
+        this.isNewFriend = isNewFriend;
     }
 
     public int getCount() {
@@ -67,7 +69,10 @@ public class SortAdapter extends BaseAdapter{
         viewHolder.chatDate.setText(this.list.get(position).getChatDate());
         viewHolder.briefIntro.setText(this.list.get(position).getBriefIntro());
         viewHolder.dots.setText("...");
-
+        if (isNewFriend){
+            viewHolder.catalog.setVisibility(View.GONE);
+            viewHolder.dots.setVisibility(View.GONE);
+        }
         return view;
 
     }
