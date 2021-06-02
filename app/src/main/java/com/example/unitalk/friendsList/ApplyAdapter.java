@@ -12,32 +12,61 @@ import android.widget.TextView;
 
 import com.example.unitalk.MyDatabaseHelper;
 import com.example.unitalk.R;
-import com.example.unitalk.bean.MatchResult;
 import com.example.unitalk.bean.User;
 
 import java.util.List;
 
-public class ApplyAdapter extends ArrayAdapter<User>{
+public class ApplyAdapter extends ArrayAdapter<User> implements View.OnClickListener {
 
     private SQLiteDatabase db;
     private MyDatabaseHelper dbHelper;
-
-    private List<MatchResult> partnerList;
+    private List<User> applyList;
     private int resourceId;
+    private int position;
 
-    public ApplyAdapter(Context context, int textViewResourceId, List<User> applyList) {
+    public ApplyAdapter(Context context, Callback callback, int textViewResourceId, List<User> applyList) {
         super(context, textViewResourceId, applyList);
         resourceId = textViewResourceId;
+        this.applyList = applyList;
+        this.callback = callback;
     }
 
+    public void setApplyList(List<User> stringList) {
+        this.applyList = applyList;
+    }
+
+    public List<User> getApplyList() {
+        return applyList;
+    }
+
+    @Override
+    public int getCount() {
+        return applyList.size();
+    }
+
+    @Override
+    public User getItem(int position) {
+        return getCount() == 0 ? null : applyList.get(position);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public void onClick(View v) {
+        callback.click(v);
+    }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         //return super.getView(position, convertView, parent);
-        User apply= getItem(position);
+        User apply = getItem(position);
         View view;
         ViewHolder viewHolder;
+        this.position = position;
         if (convertView == null) {
             //任务 补充完整
             view = LayoutInflater.from(getContext()).inflate(resourceId, null);
@@ -62,7 +91,6 @@ public class ApplyAdapter extends ArrayAdapter<User>{
         viewHolder.apply_intention.setText(apply.getIntention());
 
         return view;
-
     }
 
     class ViewHolder {
@@ -72,6 +100,12 @@ public class ApplyAdapter extends ArrayAdapter<User>{
         TextView apply_target_language2;
         TextView apply_target_language3;
         TextView apply_intention;
+    }
+
+    private Callback callback;
+
+    public interface Callback {
+        public void click(View v);
     }
 
 }

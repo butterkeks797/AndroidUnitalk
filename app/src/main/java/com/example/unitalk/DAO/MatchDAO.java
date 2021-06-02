@@ -17,7 +17,7 @@ public class MatchDAO {
     private MyDatabaseHelper dbHelper;
 
     public MatchDAO(Context context){
-        dbHelper = new MyDatabaseHelper(context, "Unitalk.db", null, 2);
+        dbHelper = new MyDatabaseHelper(context, "Unitalk.db", null, 3);
     }
 
 

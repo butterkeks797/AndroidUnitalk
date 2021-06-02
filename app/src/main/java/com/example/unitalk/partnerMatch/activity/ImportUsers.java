@@ -15,7 +15,7 @@ public class ImportUsers extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dbHelper = new MyDatabaseHelper(this, "Unitalk.db", null, 2);
+        dbHelper = new MyDatabaseHelper(this, "Unitalk.db", null, 3);
         dbHelper.getWritableDatabase();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();

@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.example.unitalk.R;
 import com.example.unitalk.friendsList.FriendsListFragment;
-import com.example.unitalk.friendsList.NewFriendFragment;
 import com.example.unitalk.home.HomeFragment;
 import com.example.unitalk.languageTest.LanguageTestFragment;
 import com.example.unitalk.partnerMatch.PartnerMatchFragment;
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private LanguageTestFragment languageTestFragment = new LanguageTestFragment();
     private PartnerMatchFragment partnerMatchFragment = new PartnerMatchFragment();
     private FriendsListFragment friendsListFragment = new FriendsListFragment();
-    private NewFriendFragment newFriendFragment = new NewFriendFragment();
 
     private FragmentManager fm;
 
@@ -81,21 +79,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        /*
-        //2、调用对象的set方法，回传接口对象
-        homeFragment.setOnButtonClick(new HomeFragment.OnButtonClick() {
-            //3、实现接口对象的方法，
-            @Override
-            public void onClick(View view) {
-                //切换到TwoFragment
-                fm.beginTransaction()
-                        //替换为TwoFragment
-                        .replace(R.layout.fragment_home,new UserCenterFragment())
-                        .commit();
-            }
-        });
-*/
 
         int id = getIntent().getIntExtra("id", 0);
         if (id == 1) {

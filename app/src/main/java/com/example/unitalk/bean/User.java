@@ -1,5 +1,7 @@
 package com.example.unitalk.bean;
 
+import com.example.unitalk.R;
+
 public class User implements Comparable<User> {
     int id;
     String email;
@@ -33,6 +35,39 @@ public class User implements Comparable<User> {
     int iconId;
     private String pinyin; // 姓名对应的拼音
     private String firstLetter; // 拼音的首字母
+    int iconType;
+
+
+    public User() {
+
+    }
+
+    public User(String userName) {
+        this.userName = userName;
+    }
+
+    public User(String name, String chatDate, String briefIntro, String pinyin) {
+        this.userName = name;
+        this.chatDate = chatDate;
+        this.briefIntro = briefIntro;
+        this.pinyin = pinyin; // 根据姓名获取拼音
+        firstLetter = pinyin.substring(0, 1).toUpperCase(); // 获取拼音首字母并转成大写
+        if (!firstLetter.matches("[A-Z]")) { // 如果不在A-Z中则默认为“#”
+            firstLetter = "#";
+        }
+    }
+
+    public User(String name, String motherTongue, String targetLanguage1, String targetLanguage2, String targetLanguage3, String intention) {
+        this.userName = name;
+        this.motherTongue = motherTongue;
+        this.targetLanguage1 = targetLanguage1;
+        this.targetLanguage2 = targetLanguage2;
+        this.targetLanguage3 = targetLanguage3;
+        this.intention = intention;
+
+    }
+
+
     public int getId() {
         return id;
     }
@@ -105,9 +140,6 @@ public class User implements Comparable<User> {
         this.targetScore3 = targetScore3;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getPartnerList() {
         return partnerList;
@@ -154,8 +186,8 @@ public class User implements Comparable<User> {
         return userName;
     }
 
-    public void setUsername(String username) {
-        this.userName = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getGender() {
@@ -217,7 +249,9 @@ public class User implements Comparable<User> {
     public int getIconId() {
         return iconId;
     }
-
+public int getIconType(){
+        return iconType;
+}
     public void setIconId(int iconId) {
         this.iconId = iconId;
     }
@@ -238,28 +272,47 @@ public class User implements Comparable<User> {
         this.firstLetter = firstLetter;
     }
 
-    public User() {
-
+    public void setIconType(String userName){
+        switch (userName) {
+            case "小测":
+                this.iconType = R.drawable.dog;
+                break;
+            case "朋小友":
+                this.iconType = R.drawable.dog;
+                break;
+            case "语小伴":
+                this.iconType = R.drawable.dog;
+                break;
+            case "路小人":
+                this.iconType = R.drawable.pig;
+                break;
+            default:
+                this.iconType = R.drawable.pig;
+        }
     }
-    public User(String name, String chatDate, String briefIntro, String pinyin) {
-        this.userName = name;
-        this.chatDate = chatDate;
-        this.briefIntro = briefIntro;
-        this.pinyin = pinyin; // 根据姓名获取拼音
+    public void setPinyinAndFirstLetter(String userName) {
+        switch (userName) {
+            case "小测":
+                this.pinyin = "xiaoce";
+                break;
+            case "朋小友":
+                this.pinyin = "pengxiaoyou";
+                break;
+            case "语小伴":
+                this.pinyin = "yuxiaoban";
+                break;
+            case "路小人":
+                this.pinyin = "luxiaoren";
+                break;
+            default:
+                this.pinyin = userName;
+        }
         firstLetter = pinyin.substring(0, 1).toUpperCase(); // 获取拼音首字母并转成大写
         if (!firstLetter.matches("[A-Z]")) { // 如果不在A-Z中则默认为“#”
             firstLetter = "#";
         }
     }
-    public User(String name, String motherTongue, String targetLanguage1, String targetLanguage2, String targetLanguage3 , String intention) {
-        this.userName = name;
-        this.motherTongue = motherTongue;
-        this.targetLanguage1 = targetLanguage1;
-        this.targetLanguage2 = targetLanguage2;
-        this.targetLanguage3 = targetLanguage3;
-        this.intention = intention;
 
-    }
     @Override
     public int compareTo(User another) {
         if (firstLetter.equals("#") && !another.getFirstLetter().equals("#")) {

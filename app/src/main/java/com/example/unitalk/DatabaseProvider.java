@@ -17,6 +17,10 @@ public class DatabaseProvider extends ContentProvider {
 
     public static final int USERINFO_ITEM = 3;
 
+    public static final int CHATMESSAGE_DIR = 4;
+
+    public static final int CHATMESSAGE_ITEM = 5;
+
     public static final String AUTHORITY = "com.example.unitalk";
 
     private static UriMatcher uriMatcher;
@@ -29,6 +33,8 @@ public class DatabaseProvider extends ContentProvider {
         uriMatcher.addURI(AUTHORITY, "question/#", QUESTION_ITEM);
         uriMatcher.addURI(AUTHORITY, "userinfo", USERINFO_DIR);
         uriMatcher.addURI(AUTHORITY, "userinfo/#", USERINFO_ITEM);
+        uriMatcher.addURI(AUTHORITY, "chatmessgae", CHATMESSAGE_DIR);
+        uriMatcher.addURI(AUTHORITY, "chatmessgae/#", CHATMESSAGE_ITEM);
     }
 
     @Override
@@ -47,15 +53,22 @@ public class DatabaseProvider extends ContentProvider {
                 cursor = db.query("Question", projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case QUESTION_ITEM:
-                String bookId = uri.getPathSegments().get(1);
-                cursor = db.query("Question", projection, "id = ?", new String[] { bookId }, null, null, sortOrder);
+                String questionId = uri.getPathSegments().get(1);
+                cursor = db.query("Question", projection, "id = ?", new String[] { questionId }, null, null, sortOrder);
                 break;
             case USERINFO_DIR:
                 cursor = db.query("UserInfo", projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case USERINFO_ITEM:
-                String categoryId = uri.getPathSegments().get(1);
-                cursor = db.query("UserInfo", projection, "id = ?", new String[] { categoryId }, null, null, sortOrder);
+                String userId = uri.getPathSegments().get(1);
+                cursor = db.query("UserInfo", projection, "id = ?", new String[] { userId }, null, null, sortOrder);
+                break;
+            case CHATMESSAGE_DIR:
+                cursor = db.query("ChatMessage", projection, selection, selectionArgs, null, null, sortOrder);
+                break;
+            case CHATMESSAGE_ITEM:
+                String chatId = uri.getPathSegments().get(1);
+                cursor = db.query("ChatMessage", projection, "id = ?", new String[] { chatId }, null, null, sortOrder);
                 break;
             default:
                 break;
@@ -79,6 +92,11 @@ public class DatabaseProvider extends ContentProvider {
                 long newUserId = db.insert("UserInfo", null, values);
                 uriReturn = Uri.parse("content://" + AUTHORITY + "/userinfo/" + newUserId);
                 break;
+            case CHATMESSAGE_DIR:
+            case CHATMESSAGE_ITEM:
+                long newChatId = db.insert("ChatMessage", null, values);
+                uriReturn = Uri.parse("content://" + AUTHORITY + "/chatmessage/" + newChatId);
+                break;
             default:
                 break;
         }
@@ -95,8 +113,8 @@ public class DatabaseProvider extends ContentProvider {
                 updatedRows = db.update("Question", values, selection, selectionArgs);
                 break;
             case QUESTION_ITEM:
-                String bookId = uri.getPathSegments().get(1);
-                updatedRows = db.update("Question", values, "id = ?", new String[] { bookId });
+                String QuestionId = uri.getPathSegments().get(1);
+                updatedRows = db.update("Question", values, "id = ?", new String[] { QuestionId });
                 break;
             case USERINFO_DIR:
                 updatedRows = db.update("UserInfo", values, selection, selectionArgs);
@@ -104,6 +122,13 @@ public class DatabaseProvider extends ContentProvider {
             case USERINFO_ITEM:
                 String userId = uri.getPathSegments().get(1);
                 updatedRows = db.update("UserInfo", values, "id = ?", new String[] { userId });
+                break;
+            case CHATMESSAGE_DIR:
+                updatedRows = db.update("ChatMessage", values, selection, selectionArgs);
+                break;
+            case CHATMESSAGE_ITEM:
+                String chatId = uri.getPathSegments().get(1);
+                updatedRows = db.update("ChatMessage", values, "id = ?", new String[] { chatId });
                 break;
             default:
                 break;
@@ -131,6 +156,13 @@ public class DatabaseProvider extends ContentProvider {
                 String categoryId = uri.getPathSegments().get(1);
                 deletedRows = db.delete("UserInfo", "id = ?", new String[] { categoryId });
                 break;
+            case CHATMESSAGE_DIR:
+                deletedRows = db.delete("ChatMessage", selection, selectionArgs);
+                break;
+            case CHATMESSAGE_ITEM:
+                String chatId = uri.getPathSegments().get(1);
+                deletedRows = db.delete("ChatMessage", "id = ?", new String[] { chatId });
+                break;
             default:
                 break;
         }
@@ -148,6 +180,10 @@ public class DatabaseProvider extends ContentProvider {
                 return "vnd.android.cursor.dir/vnd.com.example.unitalk. provider.userinfo";
             case USERINFO_ITEM:
                 return "vnd.android.cursor.item/vnd.com.example.unitalk. provider.userinfo";
+            case CHATMESSAGE_DIR:
+                return "vnd.android.cursor.dir/vnd.com.example.unitalk. provider.chatmessage";
+            case CHATMESSAGE_ITEM:
+                return "vnd.android.cursor.item/vnd.com.example.unitalk. provider.chatmessage";
         }
         return null;
     }

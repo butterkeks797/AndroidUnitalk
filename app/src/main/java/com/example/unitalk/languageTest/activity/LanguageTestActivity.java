@@ -95,7 +95,7 @@ public class LanguageTestActivity extends AppCompatActivity {
         Log.d("LanguageTestActivity", "pressed.");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_test);
-        dbHelper = new MyDatabaseHelper(this, "Unitalk.db", null, 2);
+        dbHelper = new MyDatabaseHelper(this, "Unitalk.db", null, 3);
         initLanguageTest();
         initUIComponents();
         count = testConfiguration.QuestionNum;

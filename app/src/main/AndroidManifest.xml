@@ -16,9 +16,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".userCenter.activity.UserCenterActivity"/>
         <activity android:name=".languageTest.activity.LanguageTestActivity"/>
-        <activity android:name=".friendsList.activity.ChatRoomActivity"/>
         <activity android:name=".partnerMatch.activity.MatchResultActivity"/>
+        <activity android:name=".languageTest.activity.ImportQuestions"/>
+        <activity android:name=".partnerMatch.activity.ImportUsers"/>
+        <activity android:name=".friendsList.activity.ChatRoomActivity"/>
+        <activity android:name=".friendsList.activity.ImportChatRece"/>
+        <activity android:name=".friendsList.activity.ImportChatSend"/>
+        <activity android:name=".friendsList.activity.NewFriendActivity"/>
+
 
         <provider
             android:name="com.example.unitalk.DatabaseProvider"

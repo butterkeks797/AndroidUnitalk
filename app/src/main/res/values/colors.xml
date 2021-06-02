@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#f6f6f6</color>
-    <color name="white">#ffffff</color>
-    <color name="red">#F30000</color>
     <color name="colorPrimaryDark">#f6f6f6</color>
     <color name="colorAccent">#1383ec</color>
     <color name="windowBackground">#f8fcfe</color>
     <color name="textColorPrimary">#000000</color>
     <color name="bottomBarInActiveTabColor">#899192</color>
     <color name="bottomBarActiveTabColor">#4b77e5</color>
+
+    <color name="font_attribute">#ff000000</color>
+    <color name="font_value">#ff888271</color>
+    <color name="font_underCard">#ff8e7e68</color>
+    <color name="font_highlight">#fff4a900</color>
+    <color name="font_empty">#ffd2cec1</color>
+
+    <color name="timeStampLine">#ffe5e1de</color>
     <color name="dividerColor">#DFDFDF</color>
+
+    <color name="textColor_disable">#4cbbbbbb</color>
+    <color name="text_color">#ff434343</color>
+    <color name="text_color_blue">#ff6699cc</color>
+    <color name="text_selected_color">#ffff9f08</color>
+    <color name="text_press_color">#ffff4b08</color>
+
+    <color name="white">#ffffff</color>
+    <color name="red">#F30000</color>
+
+
 </resources>

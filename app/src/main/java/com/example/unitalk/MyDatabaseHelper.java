@@ -40,6 +40,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "student_number text, "
             + "mother_tongue text)";
 
+    public static final String CREATE_CHAT_MESSAGE = "create table ChatMessage ("
+            + "id integer primary key autoincrement, "
+            + "sender_id int, "
+            + "receiver_id int, "
+            + "message_type int, " //0为接收，1为发送
+            + "send_date text, "
+            + "content text)";
 
 
     private Context mContext;
@@ -54,6 +61,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_QUESTION);
         db.execSQL(CREATE_USER_INFO);
+        db.execSQL(CREATE_CHAT_MESSAGE);
        // Toast.makeText(mContext, "Create succeeded", Toast.LENGTH_SHORT).show();
     }
 
@@ -61,6 +69,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists Question");
         db.execSQL("drop table if exists UserInfo");
+        db.execSQL("drop table if exists ChatMessage");
         onCreate(db);
     }
 

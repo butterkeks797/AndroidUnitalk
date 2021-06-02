@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import com.example.unitalk.MainActivity;
 import com.example.unitalk.R;
+import com.example.unitalk.friendsList.activity.ImportChatRece;
+import com.example.unitalk.friendsList.activity.ImportChatSend;
 import com.example.unitalk.languageTest.activity.ImportQuestions;
 import com.example.unitalk.partnerMatch.activity.ImportUsers;
 
@@ -20,8 +22,11 @@ public class HomeFragment extends Fragment {
     Button btn_language_test;
     Button btn_partner_match;
     Button btn_friends_list;
+
     Button btn_import_questions;
     Button btn_import_users;
+    Button btn_import_receive_messages;
+    Button btn_import_send_messages;
 
     @Nullable
     @Override
@@ -81,6 +86,23 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                     Intent intent = new Intent(getActivity(), ImportUsers.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_import_receive_messages = (Button) view.findViewById(R.id.btn_import_receive_messages);
+        btn_import_send_messages = (Button) view.findViewById(R.id.btn_import_send_messages);
+        btn_import_receive_messages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ImportChatRece.class);
+                startActivity(intent);
+            }
+        });
+        btn_import_send_messages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ImportChatSend.class);
                 startActivity(intent);
             }
         });

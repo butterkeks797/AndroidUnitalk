@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/homepage_content_container"
         android:layout_width="wrap_content"
-        android:layout_height="450dp"
+        android:layout_height="500dp"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
@@ -64,6 +64,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="语伴列表" />
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -84,6 +85,30 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="造用户" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_import_receive_messages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:text="造接收" />
+
+                <Button
+                    android:id="@+id/btn_import_send_messages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="造发送" />
 
             </LinearLayout>
 

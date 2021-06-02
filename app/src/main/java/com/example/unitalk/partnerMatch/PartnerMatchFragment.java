@@ -56,7 +56,7 @@ public class PartnerMatchFragment extends Fragment {
 
 
     //OnItemSelected监听器
-    private class ProvOnItemSelectedListener1 implements OnItemSelectedListener {
+    private class  ProvOnItemSelectedListener1 implements OnItemSelectedListener{
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             //拿到被选择项的值
@@ -70,8 +70,7 @@ public class PartnerMatchFragment extends Fragment {
 
         }
     }
-
-    private class ProvOnItemSelectedListener2 implements OnItemSelectedListener {
+    private class  ProvOnItemSelectedListener2 implements OnItemSelectedListener{
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             //拿到被选择项的值
@@ -83,6 +82,7 @@ public class PartnerMatchFragment extends Fragment {
 
         }
     }
+
 
 
 }

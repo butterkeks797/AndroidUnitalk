@@ -1,6 +1,8 @@
 package com.example.unitalk.friendsList;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,76 +15,92 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.example.unitalk.DAO.ApplyDAO;
+import com.example.unitalk.DAO.FriendsListDAO;
+import com.example.unitalk.MyDatabaseHelper;
 import com.example.unitalk.R;
+import com.example.unitalk.bean.MatchResult;
 import com.example.unitalk.bean.User;
 import com.example.unitalk.friendsList.activity.ChatRoomActivity;
+import com.example.unitalk.friendsList.activity.NewFriendActivity;
+import com.example.unitalk.partnerMatch.MatchAdapter;
+import com.example.unitalk.partnerMatch.activity.MatchResultActivity;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class FriendsListFragment extends Fragment {
-    LinearLayout layout_new_friend;
+    private SideBar sideBar;
+
+    private LinearLayout layout_new_friend_bar;
+    private ListView list_myFriends;
+
+    private List<User> myFriendsList;
+    private FriendsListDAO friendsListDAO;
+    private SortAdapter sortAdapter;
+
+    private int friendId;
+    private String friendName;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getContext(), R.layout.fragment_friendslist, null);
         super.onCreate(savedInstanceState);
+        View view = View.inflate(getContext(), R.layout.fragment_friendslist, null);
 
-        listView = (ListView) view.findViewById(R.id.listView);
+        list_myFriends = (ListView) view.findViewById(R.id.list_myFriends);
+
         sideBar = (SideBar) view.findViewById(R.id.side_bar);
         sideBar.setOnStrSelectCallBack(new SideBar.ISideBarSelectCallBack() {
             @Override
             public void onSelectStr(int index, String selectStr) {
-                for (int i = 0; i < list.size(); i++) {
-                    if (selectStr.equalsIgnoreCase(list.get(i).getFirstLetter())) {
-                        listView.setSelection(i); // 选择到首字母出现的位置
+                for (int i = 0; i < myFriendsList.size(); i++) {
+                    if (selectStr.equalsIgnoreCase(myFriendsList.get(i).getFirstLetter())) {
+                        list_myFriends.setSelection(i); // 选择到首字母出现的位置
                         return;
                     }
                 }
             }
         });
+
         initData();
 
-        layout_new_friend = (LinearLayout) view.findViewById(R.id.new_friend_bar);
-        layout_new_friend.setOnClickListener(new View.OnClickListener() {
+        // 页面上方 “新的语伴”入口
+        layout_new_friend_bar = (LinearLayout) view.findViewById(R.id.new_friend_bar);
+        layout_new_friend_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NewFriendFragment newFriendFragment = new NewFriendFragment();
-                Log.d("FriendListFragment", "go to new friend");
-                getFragmentManager().beginTransaction().replace(R.id.contentContainer, (Fragment) newFriendFragment).commit();
+                Intent intent = new Intent(getActivity(), NewFriendActivity.class);
+                startActivity(intent);
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        // 语伴列表事件
+        list_myFriends.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("FriendListFragment", "go to ChatRoomActivity with id of " + list.get(position).getId());
-                startActivity(new Intent(getActivity(), ChatRoomActivity.class));
-                // 换成getFragmentManager().beginTransaction().replace(R.id.contentContainer, (Fragment) chatRoomFragment).commit();
-                // TODO 传参，将list.get(position).getId()给到chatroom activity
+                friendId = myFriendsList.get(position).getId();
+                friendName = myFriendsList.get(position).getUserName();
+                Log.d("FriendListFragment", "go to ChatRoomActivity with id of " + friendId);
+                Intent intent = new Intent(getActivity(), ChatRoomActivity.class);
+                intent.putExtra("friendName", friendName);
+                intent.putExtra("friendId", friendId);
+                startActivity(intent);
             }
         });
 
         return view;
     }
 
-    private ListView listView;
-    private SideBar sideBar;
-    private ArrayList<User> list;
-
     private void initData() {
-        list = new ArrayList<>();
-        User u1 = new User("咩咩子", "5-23", "英语，西班牙语，法语", "miemiezi");
-        list.add(u1);
-        User u2 = new User("工具人", "3-21", "英语，德语", "gongjuren");
-        list.add(u2);
-        User u3 = new User("default", "1.29", "briefIntro", "default");
-        list.add(u3);
-        list.add(u3);
-
-        // todo 遍历cursor，放入user对象
-        Collections.sort(list); // 对list进行排序，需要让User实现Comparable接口重写compareTo方法
-        SortAdapter adapter = new SortAdapter(getContext(), list, false);
-        listView.setAdapter(adapter);
+        friendsListDAO = new FriendsListDAO(getContext());
+        myFriendsList = friendsListDAO.query();
+        Collections.sort(myFriendsList); // 对list进行排序，需要让User实现Comparable接口重写compareTo方法
+        sortAdapter = new SortAdapter(getContext(), R.layout.friendlist_item, myFriendsList, false);
+        list_myFriends.setAdapter(sortAdapter);
     }
+
 }
