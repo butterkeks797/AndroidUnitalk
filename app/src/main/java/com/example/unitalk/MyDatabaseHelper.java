@@ -3,16 +3,9 @@ package com.example.unitalk;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
-    // TODO 用户信息表；题库表；聊天消息表（？）
-    public static final String CREATE_BOOK = "create table Book ("
-            + "id integer primary key autoincrement, "
-            + "author text, "
-            + "price real, "
-            + "pages integer, "
-            + "name text)";
+    // TODO 用户信息表；题库表；聊天消息表
 
     public static final String CREATE_QUESTION = "create table Question ("
             + "id integer primary key autoincrement, "
@@ -26,12 +19,35 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             + "choiceA text, "
             + "choiceB text, "
             + "choiceC text, "
-            + "choiceD text)";
+            + "choiceD text, "
+            + "selected text)";
 
-    public static final String CREATE_CATEGORY = "create table Category ("
+    public static final String CREATE_USER_INFO = "create table UserInfo ("
             + "id integer primary key autoincrement, "
-            + "category_name text, "
-            + "category_code integer)";
+            + "age int, "
+            + "email text, "
+            + "region text, "
+            + "target_language1 text, "
+            + "target_language2 text, "
+            + "target_language3 text, "
+            + "intention text, "
+            + "major text, "
+            + "nationality text, "
+            + "school text, "
+            + "username text, "
+            + "gender text, "
+            + "grade text, "
+            + "student_number text, "
+            + "mother_tongue text)";
+
+    public static final String CREATE_CHAT_MESSAGE = "create table ChatMessage ("
+            + "id integer primary key autoincrement, "
+            + "sender_id int, "
+            + "receiver_id int, "
+            + "message_type int, " //0为接收，1为发送
+            + "send_date text, "
+            + "content text)";
+
 
     private Context mContext;
 
@@ -43,17 +59,17 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_BOOK);
         db.execSQL(CREATE_QUESTION);
-        db.execSQL(CREATE_CATEGORY);
+        db.execSQL(CREATE_USER_INFO);
+        db.execSQL(CREATE_CHAT_MESSAGE);
        // Toast.makeText(mContext, "Create succeeded", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists Book");
         db.execSQL("drop table if exists Question");
-        db.execSQL("drop table if exists Category");
+        db.execSQL("drop table if exists UserInfo");
+        db.execSQL("drop table if exists ChatMessage");
         onCreate(db);
     }
 

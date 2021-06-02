@@ -8,77 +8,10 @@
     android:layout_height="match_parent">
 
 
-    <com.roughike.bottombar.BottomBar
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        app:bb_behavior="shifting"
-        app:bb_tabXmlResource="@xml/bottombar_tabs"/>
+    <!-- This could be your fragment container, or something -->
+    <!--include layout="@layout/toolbar_layout"/-->
+    <include layout="@layout/container"/>
 
-
-    <LinearLayout
-        android:id="@+id/database"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/create_database"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create database" />
-
-        <Button
-            android:id="@+id/add_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add data" />
-
-        <Button
-            android:id="@+id/delete_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete data" />
-
-        <Button
-            android:id="@+id/query_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Query data" />
-
-        <Button
-            android:id="@+id/update_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update data" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottombar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/database"
-        android:baselineAligned="false"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btn2"
-            style="@style/ButtonStyle"
-            android:text="bottom_bar_color_activity" />
-
-        <Button
-            android:id="@+id/btn1"
-            style="@style/ButtonStyle"
-            android:layout_marginTop="100dp"
-            android:text="simpleActivity" />
-
-        <Button
-            android:id="@+id/btn3"
-            style="@style/ButtonStyle"
-            android:text="Badges_Activity" />
-    </LinearLayout>
 
 
 </RelativeLayout>

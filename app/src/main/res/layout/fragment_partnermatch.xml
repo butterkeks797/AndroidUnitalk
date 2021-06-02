@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/container_match_result"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/match_tip0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPersonName"
+            android:text="请选择您想要练习的语种和交流目的"
+            android:textColor="#949494"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/target_language"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/match_tip0"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/text_target_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="语伴语种"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_target_lang"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="23dp"
+                android:layout_toRightOf="@id/text_target_language"
+                android:entries="@array/target_language_array" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/intention"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@id/target_language"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/text_intention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="交流目的"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_intention"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="25dp"
+                android:layout_toRightOf="@id/text_intention"
+                android:entries="@array/intention_array" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/match_tip1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/intention"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="我们将根据您选择的语种和交流目的，综合考虑您的语言能力信息，为您匹配合适的语伴。"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/match_tip2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_tip1"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="以下是关于交流目的选项的对应解释："
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/match_tip3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_tip2"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_marginBottom="5dp"
+            android:text="聊天谈心 —— 匹配选定语种为母语、目的语的用户"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/match_tip4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_tip3"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_marginBottom="5dp"
+            android:text="文化交流 —— 优先匹配选定语种为母语的用户"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/match_tip5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_tip4"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_marginBottom="5dp"
+            android:text="提升能力 —— 匹配选定语种能力水平较高的用户"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/match_tip6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/match_tip5"
+            android:layout_alignLeft="@id/target_language"
+            android:layout_alignRight="@id/target_language"
+            android:layout_marginBottom="5dp"
+            android:text="准备考试 —— 优先匹配备考相同考试的用户"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_match"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="立即匹配"
+
+            />
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
