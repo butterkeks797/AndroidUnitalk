@@ -30,7 +30,7 @@ public class ApplyDAO {
         //sql:sql语句，  selectionArgs:查询条件占位符的值,返回一个cursor对象
         Cursor cursor = db.rawQuery("select id, username, gender, school, mother_tongue, " +
                 "target_language1, target_language2, target_language3, intention from UserInfo " +
-                "where id=3", null);
+                "where id=?", new String[]{String.valueOf(queryId)});
 
         //解析Cursor中的数据
         if(cursor != null && cursor.getCount() >0){//判断cursor中是否存在数据

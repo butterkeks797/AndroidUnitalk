@@ -15,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.unitalk.DAO.FriendsListDAO;
+import com.example.unitalk.DAO.LanguageTestDAO;
 import com.example.unitalk.MyDatabaseHelper;
 import com.example.unitalk.R;
 import com.example.unitalk.bean.User;
@@ -174,8 +176,11 @@ public class LanguageTestActivity extends AppCompatActivity {
         });
     }
 
+    LanguageTestDAO languageTestDao;
     private void saveScore(int score) {
         // todo 这里需要写db。
+        languageTestDao = new LanguageTestDAO(this);
+        languageTestDao.update(user.getId(), score);
     }
 
     private void reviewOrNot() {
@@ -216,7 +221,6 @@ public class LanguageTestActivity extends AppCompatActivity {
                                 }
                                 current = 0;
                                 count = questionList.size();
-
                                 Question q = questionList.get(current);
                                 refreshButtonsWith(q);
                                 tv_explaination.setVisibility(View.VISIBLE);
@@ -231,7 +235,6 @@ public class LanguageTestActivity extends AppCompatActivity {
                         .show();
             }
         }
-
     }
 
     private void saveScoreOrNot() {

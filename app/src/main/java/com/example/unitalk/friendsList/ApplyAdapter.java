@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.unitalk.MyDatabaseHelper;
@@ -77,6 +78,8 @@ public class ApplyAdapter extends ArrayAdapter<User> implements View.OnClickList
             viewHolder.apply_target_language2 = (TextView) view.findViewById(R.id.apply_target_language2);
             viewHolder.apply_target_language3 = (TextView) view.findViewById(R.id.apply_target_language3);
             viewHolder.apply_intention = (TextView) view.findViewById(R.id.apply_intention);
+            viewHolder.btn_accept = (Button) view.findViewById(R.id.btn_accept);
+            viewHolder.btn_ignore = (Button) view.findViewById(R.id.btn_ignore);
             view.setTag(viewHolder);
         } else {
             view = convertView;
@@ -89,6 +92,8 @@ public class ApplyAdapter extends ArrayAdapter<User> implements View.OnClickList
         viewHolder.apply_target_language2.setText(apply.getTargetLanguage2());
         viewHolder.apply_target_language3.setText(apply.getTargetLanguage3());
         viewHolder.apply_intention.setText(apply.getIntention());
+        viewHolder.btn_accept.setOnClickListener(this);
+        viewHolder.btn_accept.setTag(position);
 
         return view;
     }
@@ -100,6 +105,8 @@ public class ApplyAdapter extends ArrayAdapter<User> implements View.OnClickList
         TextView apply_target_language2;
         TextView apply_target_language3;
         TextView apply_intention;
+        Button btn_accept;
+        Button btn_ignore;
     }
 
     private Callback callback;

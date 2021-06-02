@@ -11,21 +11,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.unitalk.MyDatabaseHelper;
 import com.example.unitalk.R;
 import com.example.unitalk.bean.MatchResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MatchAdapter extends ArrayAdapter<MatchResult> {
+import javax.security.auth.callback.Callback;
+
+public class MatchAdapter extends ArrayAdapter<MatchResult> implements View.OnClickListener{
 
     private int resourceId;
+    private List<MatchResult> mPartnerList = new ArrayList();
+    private Context mContext;
+    private Callback mCallback;
 
-    public MatchAdapter(Context context, int textViewResourceId, List<MatchResult> partnerList) {
+    public MatchAdapter(Context context, Callback callback, int textViewResourceId, List<MatchResult> partnerList) {
         super(context, textViewResourceId, partnerList);
         resourceId = textViewResourceId;
+        mCallback = callback;
+        mPartnerList = partnerList;
     }
 
 
@@ -48,6 +57,7 @@ public class MatchAdapter extends ArrayAdapter<MatchResult> {
             viewHolder.ptn_target_language2 = (TextView) view.findViewById(R.id.ptn_target_language2);
             viewHolder.ptn_target_language3 = (TextView) view.findViewById(R.id.ptn_target_language3);
             viewHolder.ptn_intention = (TextView) view.findViewById(R.id.ptn_intention);
+            viewHolder.ptn_btn_add = (Button) view.findViewById(R.id.btn_add);
             view.setTag(viewHolder);
         } else {
             view = convertView;
@@ -62,6 +72,9 @@ public class MatchAdapter extends ArrayAdapter<MatchResult> {
         viewHolder.ptn_target_language3.setText(ptn.getTarget_language3());
         viewHolder.ptn_intention.setText(ptn.getIntention());
 
+        viewHolder.ptn_btn_add.setOnClickListener(this);
+        viewHolder.ptn_btn_add.setTag(position);
+
         return view;
 
     }
@@ -75,5 +88,30 @@ public class MatchAdapter extends ArrayAdapter<MatchResult> {
         TextView ptn_target_language2;
         TextView ptn_target_language3;
         TextView ptn_intention;
+
+        Button ptn_btn_add;
     }
+
+    public void setmPartnerList(List<MatchResult> partnerList) {
+        mPartnerList = partnerList;
+    }
+
+    public List<MatchResult> getmPartnerList() {
+        return mPartnerList;
+    }
+
+    @Override
+    public void onClick(View view) {
+        mCallback.click(view);
+    }
+
+    /**
+     * 回调接口.
+     */
+    public interface Callback {
+        void click(View v);
+    }
+
+
+
 }

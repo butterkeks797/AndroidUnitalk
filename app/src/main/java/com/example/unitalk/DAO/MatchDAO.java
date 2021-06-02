@@ -37,9 +37,14 @@ public class MatchDAO {
         //解析Cursor中的数据
         if(cursor != null && cursor.getCount() >0){//判断cursor中是否存在数据
             //循环遍历结果集，获取每一行的内容
-            while(cursor.moveToNext()){//条件，游标能否定位到下一行
+            int i=0;
+            while (cursor.moveToNext() && i<5){//条件，游标能否定位到下一行
                 //获取数据
                 int id = cursor.getInt(0);
+                if (id==1) {
+                    continue;
+                }
+
                 String name = cursor.getString(1);
                 String gender = cursor.getString(2);
                 String school = cursor.getString(3);
@@ -54,6 +59,7 @@ public class MatchDAO {
                         target_language1, target_language2, target_language3, intention);
                 partnerList.add(ptn);
 
+                i++;
             }
             cursor.close();//关闭结果集
         }

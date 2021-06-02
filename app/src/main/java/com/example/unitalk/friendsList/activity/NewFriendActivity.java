@@ -1,6 +1,7 @@
 package com.example.unitalk.friendsList.activity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.example.unitalk.R;
 import com.example.unitalk.bean.User;
 import com.example.unitalk.friendsList.ApplyAdapter;
 import com.example.unitalk.friendsList.SortAdapter;
+import com.example.unitalk.languageTest.activity.LanguageTestActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,13 +64,22 @@ public class NewFriendActivity extends AppCompatActivity implements ApplyAdapter
         // todo 获得id
 
         applyDAO = new ApplyDAO(this);
-        newFriendsList = applyDAO.query(123);
+        newFriendsList = applyDAO.query(3);
         applyAdapter = new ApplyAdapter(this, this, R.layout.new_friend_item, newFriendsList);
         list_new_friends.setAdapter(applyAdapter);
     }
 
+
     @Override
-    public void click(View v) {//重写Callback的click方法
-        Log.d("NewFriendActivity", "now is ");
+    public void click(View v) {
+        int position = (int) v.getTag();
+        new AlertDialog.Builder(NewFriendActivity.this, R.style.AlertDialogTheme)
+                .setTitle("提示")
+                .setMessage("你们已经成为好友啦~")
+                .show();
+        newFriendsList = applyDAO.query(0);
+        applyAdapter = new ApplyAdapter(this, this, R.layout.new_friend_item, newFriendsList);
+        list_new_friends.setAdapter(applyAdapter);
+
     }
 }
